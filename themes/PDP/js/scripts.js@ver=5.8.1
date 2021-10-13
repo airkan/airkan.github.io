@@ -1,0 +1,57 @@
+(function( $ ){
+
+$(document).ready(function($) {
+
+  $('button.mas-content').on('click', function(){
+     $(this).toggleClass("hide");
+     $(this).parent().next('.entry-subtitle.more').toggleClass("hide");
+   });
+
+   $('button.menos-content').on('click', function(){
+      $(".entry-subtitle .mas-content").removeClass("hide");
+      $(this).toggleClass("hide");
+      $(this).parent('p.entry-subtitle').toggleClass("hide");
+    });
+
+
+  $('#burguer').on('click', function() {
+      $(this).toggleClass("active");
+      $('body').toggleClass("body-fixed");
+      $('.topmenu').toggleClass("active");
+      $('nav.menu').toggleClass("active");
+      $('.site-header .footer-menu').toggleClass("active");
+      $('.site-header .social-menu').toggleClass("active");
+      $('.site-header').toggleClass("active");
+      // $("#search-light-box").removeClass("active");
+    });
+
+
+  if ($(window).width() < 769) {
+
+     $('nav.menu a.menu-item-has-children').click(function(){
+        $(this).toggleClass('open');
+        $(this).next('nav.submenu-nav').toggleClass('active');
+      });
+
+      $('nav.menu a.menu-item-has-children.open').click(function(){
+         $(this).toggleClass('open');
+       });
+
+  } else {
+
+    $('nav.menu a.menu-item-has-children').mouseenter(function () {
+        $('.submenu-nav').removeClass('active');
+        $(this).toggleClass('on');
+        $(this).next('nav.submenu-nav').addClass('active');
+    });
+
+    $('.submenu-nav').mouseleave(function () {
+        $(this).removeClass('active');
+        $('nav.menu a.menu-item-has-children').removeClass('on');
+    });
+
+  }
+});
+
+
+}) (jQuery);
